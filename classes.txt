@@ -1,0 +1,23 @@
+digraph g {
+	node [shape=box];
+	ThalesControl
+	
+	AbstractTest -> Test [arrowhead=empty,style=dashed]
+	AbstractTestSuite -> TestSuite [arrowhead=empty,style=dashed]
+	
+	TestSuite -> Test [arrowhead=empty]
+	ThalesControlTest -> Test [arrowhead=empty]
+	
+	SequentialTestSuite -> AbstractTestSuite [arrowhead=empty]
+	ParallelTestSuite -> AbstractTestSuite [arrowhead=empty]
+	ThalesControlTestSuite -> SequentialTestSuite [arrowhead=empty]
+	ThalesControlTestSuite -> ThalesControlTest  [arrowhead=empty,style=dashed]
+	ThalesControlDispatchTestSuite -> ParallelTestSuite [arrowhead=empty]
+	ThalesControlDispatchTestSuite -> ThalesControlTest [arrowhead=empty,style=dashed]
+	ThalesControlTestCase -> ThalesControlTest [arrowhead=empty,style=dashed]
+	Workflow -> SequentialTestSuite [arrowhead=empty]
+	Extension -> AbstractTest [arrowhead=empty]
+	ThalesControlTestCase -> AbstractTest [arrowhead=empty]
+	
+	ThalesControlTest -> ThalesControl [arrowhead=open]
+}
